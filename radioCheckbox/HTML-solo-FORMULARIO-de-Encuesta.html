@@ -1,0 +1,98 @@
+﻿<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+	<TITLE>FORMULARIO DE REGISTRO</TITLE>
+
+</HEAD>
+
+<BODY>
+
+	<form name="formulario" method="post" enctype="text/plain">
+		Nombre: <input type="text" name="nombre" id="nombre" size="25" maxlength="50"><br><br>
+		Apellidos: <input type="text" name="apellidos" id="apellidos" size="35" maxlength="100">
+		<br><br>
+		Correo electrónico: <input type="text" value="@" name="correo" id="correo" size="40" maxlength="100">
+		<br><br>
+		Población: <input type="text" name="poblacion" id="poblacion" size="15" maxlength="50">
+		<br><br>
+		Provincia: <input type="text" name="provincia" id="provincia" size="15" maxlength="50">
+		<table align="center" width="100%" border="0" cellspacing="0" cellpadding="10">
+			<tr>
+				<td>Edad:<br>
+					<input type="radio" name="edad" value="0-20"> 0-20<br>
+					<input type="radio" name="edad" value="20-40" checked> 20-40<br>
+					<input type="radio" name="edad" value="40-60"> 40-60<br>
+					<input type="radio" name="edad" value="60-100"> 60-100
+				</td>
+				<td>&iquest;C&oacute;mo nos conociste?<br>
+					<input type="checkbox" name="conocer" value="Por amigos">A trav&eacute;s de un amigo.<br>
+					<input type="checkbox" name="conocer" value="Utilizando buscador">A trav&eacute;s de un
+					buscador.<br>
+					<input type="checkbox" name="conocer" value="Navegando">Navegando por la red.<br>
+					<input type="checkbox" name="conocer" value="Redes Sociales">Redes Sociales
+				</td>
+			</tr><br><br>
+			<tr>
+				<td>
+					<input type="button" value="Registrar" onclick="registrar();">
+				</td>
+				<td>
+					<input type="Reset" value="Limpiar">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="Buscar" onclick="buscar();">
+				</td>
+			</tr>
+		</table>
+		<textarea id="objeto" rows="10" cols="50">
+
+			</textarea>
+	</form>
+
+</body>
+<script>
+	var nombre = document.querySelectorAll("input")[0];
+	var apellido = document.querySelectorAll("input")[1];
+	var correo = document.querySelectorAll("input")[2];
+	var poblacion = document.querySelectorAll("input")[3];
+	var provincia = document.querySelectorAll("input")[4];
+	var edad = document.getElementsByName("edad");
+	var checkbox = document.getElementsByName("conocer");
+	var botonR = document.querySelectorAll("input")[13];
+	var botonL = document.querySelectorAll("input")[14];
+	var botonB = document.querySelectorAll("input")[15];
+	var textarea = document.getElementById("objeto");
+	var edadV;
+	var checkV="";
+
+	function registrar() {
+		for (let index = 0; index < edad.length; index++) {
+
+			if (edad[index].checked) {
+				edadV = edad[index].value;
+			}
+
+		}
+		for (let index = 0; index < checkbox.length; index++) {
+
+			if (checkbox[index].checked) {
+
+				checkV+= checkbox[index].value;
+
+			}
+		}
+
+
+		textarea.innerHTML = nombre.value +"\n"+apellido.value + "\n"+correo.value + "\n"+poblacion.value 
+		+ "\n"+provincia.value + "\n"+edadV+"\n"+checkV;
+	}
+
+
+
+
+</script>
+
+</html>

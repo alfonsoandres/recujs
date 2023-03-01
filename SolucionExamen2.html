@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>Estudiando al cliente</title>
+</head>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+
+      var nombre = document.querySelectorAll("input")[0];
+      nombre.focus();
+      console.log(nombre);
+      var correo = document.querySelectorAll("input")[1];
+      var check = document.querySelectorAll("input")[2];
+      var boton = document.querySelectorAll("input")[3];
+      var select = document.querySelector("select")[0];
+      var botonCheck = "NO";
+
+      nombre.addEventListener("keypress", function (event) {
+
+
+         console.log(event.keyCode);
+
+         if (event.keyCode == 13) {
+
+            correo.focus();
+         }
+
+
+      });
+
+
+
+      boton.addEventListener("click", function (event) {
+
+         if (check.checked) {
+            botonCheck = "Si Quiero que se me envie informacion por ";
+         }
+
+
+         var xhr = new XMLHttpRequest();
+
+         xhr.onreadystatechange = function () {
+
+            if (this.readyState == 4 && this.status == 200) {
+
+               document.getElementsByName("devolucion")[0].innerHTML = this.responseText + select.value;
+            }
+
+         };
+
+         // Open and send the request 
+         xhr.open("POST", `ccaa.json`, true);
+         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+         xhr.send("nombre=" + nombre.value + "&email=" + correo.value + "&opc=" + select.value + "&pet=" + botonCheck.value);
+
+      });
+
+
+   }, false);
+</script>
+
+<body>
+   <center>
+
+      <body>
+         <h1>Enviando datos de forma as�ncrona con AJAX</h1>
+         <p>Por favor, introduce los siguientes datos</p>
+         <form name="rrss">
+            <p><label>�Cu�l es tu nombre?</label> <input type="text" required /></p>
+            <p><label>�Nos das tu correo?</label> <input type="email" required /></p>
+            <p><label>�C�mo nos has conocido?</label> <select id="cmbMedio">
+                  <option value="FaceBook">Facebook</option>
+                  <option value="Twitter">Twitter</option>
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="Correo">Mail</option>
+               </select></p>
+            <p><input type="checkbox" /> <label>�Quieres recibir nuestra informaci�n por el medio que nos has
+                  conocido?</label></p>
+            <p><input type="button" value=" Aceptar " /></p><br>
+            <p><b>Resultado de la conexi�n al servidor:</b></p><br>
+            <div name="devolucion"></div>
+         </form>
+   </center>
+</body>
+
+</html>

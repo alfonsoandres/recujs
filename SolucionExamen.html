@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen</title>
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var table = document.createElement("table");
+        const arrayIz = { '1': 'Abierto 24', '2': 'Clases Colectivas', '3': 'Artes Marciales' };
+        const arrayder = { '1': 'Solo Mujeres', '2': 'Crossfit', '3': 'Pilates' };
+
+        for (let index = 1; index <= 3; index++) {
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            var texto = document.createTextNode(arrayIz[index]);
+            var checkboxIzq = document.createElement("input");
+
+            checkboxIzq.setAttribute("type", "checkbox");
+            checkboxIzq.setAttribute("name", "checkboxName");
+            checkboxIzq.setAttribute("checked", "checkboxName");
+
+            td.appendChild(checkboxIzq);
+            td.appendChild(texto);
+            tr.appendChild(td);
+
+
+            var texto1 = document.createTextNode(arrayder[index]);
+            var td2 = document.createElement("td");
+            var checkboxDch = document.createElement("input");
+            checkboxDch.setAttribute("type", "checkbox");
+            checkboxDch.setAttribute("name", "checkboxName");
+            checkboxDch.setAttribute("checked","");
+
+            td2.appendChild(checkboxDch);
+            td2.appendChild(texto1);
+            tr.appendChild(td2);
+            table.appendChild(tr);
+
+        }
+
+        document.body.appendChild(table);
+
+        table.setAttribute("border", "2");
+
+    }, false);
+
+</script>
+
+<body>
+
+
+
+</body>
+
+</html>
